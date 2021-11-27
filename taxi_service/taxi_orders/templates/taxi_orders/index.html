@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+       {% load bootstrap5 %}
+       {% bootstrap_javascript %}
+       {% bootstrap_css %}
+       <title>Заказы таксопарка</title>
+</head>
+<body>
+<h1>Заказы</h1>
+       {% for ord in orders %}
+<div>
+<h2>Время заказа: {{ ord.created_at|date:"d.m.Y. H:i:s" }}</h2>
+<p>Водитель: {{ ord.driver }}</p>
+<p>Точка подачи: {{ ord.address_from }}</p>
+<p>Пункт назначения: {{ ord.address_to }}</p>
+<p>Длина пути, км: {{ ord.route_length }}</p>
+<p>Количество пассажиров: {{ ord.passengers_num }}</p>
+</div>
+       {% endfor %}
+</body>
+</html>
